@@ -350,13 +350,13 @@ p, li, span.body-text {
 }
 
 .box ul li::before {
-  content: '├─ ';
+  content: '|-- ';
   color: var(--dim);
   font-family: var(--font-mono);
 }
 
 .box ul li:last-child::before {
-  content: '└─ ';
+  content: '`-- ';
 }
 
 /* ==========================================

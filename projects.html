@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Projects · Ethan Koester-Schmidt</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="page-projects">
+  <div class="noise-overlay"></div>
+
+  <div class="boot-screen">
+    <div class="boot-text"></div>
+  </div>
+
+  <div class="terminal-wrapper">
+    <div class="terminal-window">
+      <div class="terminal-titlebar">
+        <span class="terminal-btn close"></span>
+        <span class="terminal-btn min"></span>
+        <span class="terminal-btn max"></span>
+        <span class="terminal-title">ethan@portfolio:~/projects</span>
+      </div>
+      <div class="terminal-body">
+
+        <nav class="nav-bar">
+          <a href="index.html">home</a>
+          <a href="about.html">about</a>
+          <a href="projects.html" class="active">projects</a>
+          <a href="github.html">github</a>
+          <a href="work.html">work</a>
+          <a href="education.html">education</a>
+        </nav>
+
+        <!-- Car Dashboard ASCII art -->
+        <div class="ascii-art">
+ ╔══════════════════════════════════════════════════════════╗
+ ║                    ┌───────────┐                        ║
+ ║       ╭───╮        │  ≋≋≋≋≋≋≋  │        ╭───╮          ║
+ ║      ╱  E  ╲       │  ≋≋≋≋≋≋≋  │       ╱ RPM ╲         ║
+ ║    ╱ ·  |  · ╲     │  ≋≋≋≋≋≋≋  │     ╱ ·  |  · ╲       ║
+ ║   │ ·   |   · │    │  FM 98.5  │    │ ·   |   · │      ║
+ ║    ╲  F · · ╱      │  ▶ ■ ■ ■  │     ╲  0 · · ╱       ║
+ ║      ╲___╱         └───────────┘       ╲___╱           ║
+ ║                    ┌───────────┐                        ║
+ ║   ┌──────────┐     │ ▒▒▒▒▒▒▒▒▒│     ┌──────────┐      ║
+ ║   │ 042,857  │     │ ▓░▓░▓░▓░▓│     │ TRIP     │      ║
+ ║   │   mi     │     │ ▒▒▒▒▒▒▒▒▒│     │ 00128 mi │      ║
+ ║   └──────────┘     └───────────┘     └──────────┘      ║
+ ╠══════════════════════════════════════════════════════════╣
+ ║  ◄◄    ▶    ►►   │  ☼  ☾  ▲  ▼  │   ◯  ◯  ◯  ◯  ◯   ║
+ ╚══════════════════════════════════════════════════════════╝
+        </div>
+
+        <h1 class="type-me glow" data-speed="40">ls projects/</h1>
+
+        <!-- Project 1: Tyson / Data Dashboard -->
+        <div class="box fade-in-after">
+          <div class="box-header">📊 Tyson Foods — Applied Business Analytics</div>
+          <div class="box-sub">Python · TeradataSQL · NumPy · Pandas · Matplotlib · SciPy · Streamlit</div>
+          <ul>
+            <li>Built a Streamlit data dashboard with 6 ML models and manual hyperparameter tuning</li>
+            <li>Constructed 2 TabNet neural networks using the Hurdle Method for charge classification</li>
+            <li>Predicted 75% of unknown charges throughout a 2-month holdout test</li>
+            <li>Built XGBoost model for late shipment prediction — 73.74% precision, 93.4% AUC</li>
+            <li>Backtesting showed potential savings of $1.5M in detention charges</li>
+          </ul>
+          <div style="margin-top:12px;">
+            <a href="https://github.com/ekoester96/data_dashboard" target="_blank" class="terminal-link">→ github.com/ekoester96/data_dashboard</a>
+          </div>
+        </div>
+
+        <!-- Project 2: ShiftSync -->
+        <div class="box fade-in-after">
+          <div class="box-header">📅 ShiftSync</div>
+          <div class="box-sub">Scheduling &amp; Workforce Management Application</div>
+          <ul>
+            <li>Full-stack scheduling application for workforce management</li>
+          </ul>
+          <div style="margin-top:12px;">
+            <a href="https://shiftsyncs.com/" target="_blank" class="terminal-link">→ shiftsyncs.com</a>
+            <span style="margin: 0 8px; color:var(--dim);">|</span>
+            <a href="https://github.com/ekoester96/shift_sync" target="_blank" class="terminal-link">→ github repo</a>
+          </div>
+        </div>
+
+        <div class="fade-in-after" style="margin-top:30px; font-family:var(--font-mono); font-size:0.8rem; color:var(--dim);">
+          <span class="prompt-prefix">ethan@projects:~$ </span>
+          <span class="cursor"></span>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <script src="terminal.js"></script>
+</body>
+</html>

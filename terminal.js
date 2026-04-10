@@ -200,21 +200,6 @@
     return 'home';
   })();
 
-  function getNeofetch() {
-    return [
-      '         .----.          ethan@portfolio',
-      '        /      \\         ----------------',
-      '       |  >_   |         OS:     PortfolioOS 1.0',
-      '       |       |         Host:   Fayetteville, AR',
-      '        \\      /         Kernel: HTML5/CSS3/JS',
-      '         \'----\'          Shell:  terminal.js',
-      '      .---++++---.       Theme:  Pastel CRT',
-      '     /   |||||||   \\     WM:     Live Server',
-      '    \'===============\'    Uptime: since 2020',
-      '                         GPA:    4.0',
-    ];
-  }
-
   function sanitize(str) {
     // Strip anything that isn't alphanumeric, space, dash, slash, tilde, or dot
     return str.replace(/[^a-zA-Z0-9 \-\/~.]/g, '').trim().toLowerCase();
@@ -235,6 +220,13 @@
       if (!target || target === '~' || target === 'home') {
         navigateTo('index.html');
         return ['Navigating to ~/home ...'];
+      }
+      if (target === '..') {
+        if (window.history.length > 1) {
+          window.history.back();
+          return ['Navigating back ...'];
+        }
+        return ['Already at root.'];
       }
       if (VALID_PAGES[target]) {
         navigateTo(VALID_PAGES[target]);
@@ -259,11 +251,11 @@
       return [
         'Available commands:',
         '  cd <page>    Navigate to a page',
+        '  cd ..        Go to previous page',
         '  ls           List available pages',
         '  pwd          Print working directory',
         '  whoami       Display user info',
         '  date         Show current date',
-        '  neofetch     System information',
         '  clear        Clear terminal output',
         '  help         Show this help message',
       ];
@@ -282,11 +274,6 @@
     // ── clear ──
     if (cmd === 'clear') {
       return ['__CLEAR__'];
-    }
-
-    // ── neofetch ──
-    if (cmd === 'neofetch') {
-      return getNeofetch();
     }
 
     // ── sudo rm -rf ──

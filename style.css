@@ -569,6 +569,7 @@ a.terminal-link:hover {
   margin-top: 16px;
   max-height: 200px;
   overflow-y: auto;
+  text-align: left;
 }
 
 .cmd-line {
@@ -577,6 +578,7 @@ a.terminal-link:hover {
   margin-top: 8px;
   font-family: var(--font-mono);
   font-size: 0.8rem;
+  text-align: left;
 }
 
 .cmd-input {

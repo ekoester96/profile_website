@@ -8,7 +8,7 @@
 </head>
 <body class="page-about">
   <div class="noise-overlay"></div>
-
+ 
   <div class="terminal-wrapper">
     <div class="terminal-window">
       <div class="terminal-titlebar">
@@ -18,7 +18,7 @@
         <span class="terminal-title">ethan@portfolio:~/about</span>
       </div>
       <div class="terminal-body">
-
+ 
         <nav class="nav-bar">
           <a href="index.html">home</a>
           <a href="about.html" class="active">about</a>
@@ -27,7 +27,7 @@
           <a href="work.html">work</a>
           <a href="education.html">education</a>
         </nav>
-
+ 
         <div class="ascii-art">
              /\
              /  \
@@ -151,11 +151,11 @@
 +-----+</div>
             <span class="skill-label">ML</span>
           </div>
-
+ 
         </div>
-
+ 
         <h2 class="type-me glow" data-speed="30">ls skills/</h2>
-
+ 
         <div class="fade-in-after" style="font-family:var(--font-mono); font-size:0.85rem; color:var(--text); margin:12px 0;">
           <span style="color:var(--dim)">|-- </span>Data Cleaning &amp; ETL<br>
           <span style="color:var(--dim)">|-- </span>Analytical &amp; Critical Thinking<br>
@@ -165,21 +165,22 @@
           <span style="color:var(--dim)">|-- </span>Documentation<br>
           <span style="color:var(--dim)">`-- </span>Communication &amp; Problem Solving
         </div>
-
+ 
         <h2 class="type-me glow" data-speed="30">cat certifications.txt</h2>
         <div class="fade-in-after" style="margin:12px 0;">
           <div class="cert-badge">[+] Azure Fundamentals -- Certified</div>
         </div>
-
-        <div class="fade-in-after" style="margin-top:30px; font-family:var(--font-mono); font-size:0.8rem; color:var(--dim);">
-          <span class="prompt-prefix">ethan@about:~$ </span>
-          <span class="cursor"></span>
+ 
+        <div class="cmd-output"></div>
+        <div class="cmd-line fade-in-after" style="margin-top:30px;">
+          <span class="prompt-prefix cmd-prompt-text">ethan@about:~$ </span>
+          <input type="text" class="cmd-input" spellcheck="false" autocomplete="off" autocapitalize="off" placeholder="type help for commands">
         </div>
-
+ 
       </div>
     </div>
   </div>
-
+ 
   <script src="terminal.js"></script>
 </body>
 </html>

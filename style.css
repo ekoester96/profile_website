@@ -562,6 +562,42 @@ a.terminal-link:hover {
 }
 
 /* ==========================================
+   COMMAND LINE INPUT
+   ========================================== */
+
+.cmd-output {
+  margin-top: 16px;
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.cmd-line {
+  display: flex;
+  align-items: center;
+  margin-top: 8px;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+}
+
+.cmd-input {
+  background: none;
+  border: none;
+  outline: none;
+  color: var(--text);
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  flex: 1;
+  caret-color: var(--accent);
+  padding: 0;
+  margin: 0;
+}
+
+.cmd-input::placeholder {
+  color: var(--border-color);
+  font-style: italic;
+}
+
+/* ==========================================
    RESPONSIVE
    ========================================== */
 

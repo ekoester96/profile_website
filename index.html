@@ -8,15 +8,11 @@
 </head>
 <body class="page-index">
   <div class="noise-overlay"></div>
-
-  <!-- Boot Sequence -->
+ 
   <div class="boot-screen">
     <div class="boot-text"></div>
   </div>
-
-  <!-- Page Transition -->
-  <div class="page-transition"></div>
-
+ 
   <div class="terminal-wrapper">
     <div class="terminal-window">
       <div class="terminal-titlebar">
@@ -26,7 +22,7 @@
         <span class="terminal-title">ethan@portfolio:~</span>
       </div>
       <div class="terminal-body" style="text-align:center; padding-top:50px;">
-
+ 
         <div class="ascii-art">
  ███████╗████████╗██╗  ██╗ █████╗ ███╗   ██╗
  ██╔════╝╚══██╔══╝██║  ██║██╔══██╗████╗  ██║
@@ -50,14 +46,14 @@
  ╚══════╝ ╚═════╝╚═╝  ╚═╝╚═╝     ╚═╝╚═╝╚═════╝    ╚═╝
         </div>
 
-        <p class="type-me glow" data-speed="35" style="font-family:var(--font-mono); font-size:1.1rem; margin:20px 0 8px;">
+         <p class="type-me glow" data-speed="35" style="font-family:var(--font-mono); font-size:1.1rem; margin:20px 0 8px;">
 Data Analyst &amp; Information Systems Developer
         </p>
-
+ 
         <p class="type-me" data-speed="25" style="font-family:var(--font-mono); font-size:0.85rem; color:var(--dim); margin-bottom:30px;">
-Fayetteville, AR  ·  University of Arkansas  ·  B.S.B.A Information Systems
+Fayetteville, AR  //  University of Arkansas  //  B.S.B.A Information Systems
         </p>
-
+ 
         <nav class="nav-bar fade-in-after" style="justify-content:center;">
           <a href="about.html">about</a>
           <a href="projects.html">projects</a>
@@ -65,17 +61,17 @@ Fayetteville, AR  ·  University of Arkansas  ·  B.S.B.A Information Systems
           <a href="work.html">work</a>
           <a href="education.html">education</a>
         </nav>
-
-        <div class="fade-in-after" style="margin-top:30px; font-family:var(--font-mono); font-size:0.8rem; color:var(--dim);">
-          <span class="prompt-prefix">visitor@portfolio:~$ </span>
-          <span>select a destination</span>
-          <span class="cursor"></span>
+ 
+        <div class="cmd-output"></div>
+        <div class="cmd-line fade-in-after" style="margin-top:30px;">
+          <span class="prompt-prefix cmd-prompt-text">visitor@portfolio:~$ </span>
+          <input type="text" class="cmd-input" spellcheck="false" autocomplete="off" autocapitalize="off" placeholder="type help for commands">
         </div>
-
+ 
       </div>
     </div>
   </div>
-
+ 
   <script src="terminal.js"></script>
 </body>
 </html>

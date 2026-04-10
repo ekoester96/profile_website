@@ -8,7 +8,7 @@
 </head>
 <body class="page-projects">
   <div class="noise-overlay"></div>
-
+ 
   <div class="terminal-wrapper">
     <div class="terminal-window">
       <div class="terminal-titlebar">
@@ -18,7 +18,7 @@
         <span class="terminal-title">ethan@portfolio:~/projects</span>
       </div>
       <div class="terminal-body">
-
+ 
         <nav class="nav-bar">
           <a href="index.html">home</a>
           <a href="about.html">about</a>
@@ -27,7 +27,7 @@
           <a href="work.html">work</a>
           <a href="education.html">education</a>
         </nav>
-
+ 
         <div class="ascii-art">
   +===========================================================+
   |                                                           |
@@ -45,47 +45,55 @@
   +===========================================================+
   |   |&lt;&lt;   &gt;||   &gt;&gt;|   //  [-]VOL[+]  //   (1)(2)(3)(4)(5) |
   +===========================================================+
-        </div>
-
-        <h1 class="type-me glow" data-speed="40">ls projects/</h1>
-
-        <div class="box fade-in-after">
-          <div class="box-header">[+] Tyson Foods -- Applied Business Analytics</div>
-          <div class="box-sub">Python / TeradataSQL / NumPy / Pandas / Matplotlib / SciPy / Streamlit</div>
-          <ul>
-            <li>Built a Streamlit data dashboard with 6 ML models and manual hyperparameter tuning</li>
-            <li>Constructed 2 TabNet neural networks using the Hurdle Method for charge classification</li>
-            <li>Predicted 75% of unknown charges throughout a 2-month holdout test</li>
-            <li>Built XGBoost model for late shipment prediction -- 73.74% precision, 93.4% AUC</li>
-            <li>Backtesting showed potential savings of $1.5M in detention charges</li>
-          </ul>
-          <div style="margin-top:12px;">
-            <a href="https://github.com/ekoester96/data_dashboard" target="_blank" class="terminal-link">-&gt; github.com/ekoester96/data_dashboard</a>
           </div>
+ 
+        <h1 class="type-me glow" data-speed="40">git remote -v</h1>
+ 
+        <div class="section fade-in-after">
+          <p style="font-family:var(--font-mono); font-size:0.9rem; margin-bottom:20px;">
+            <span style="color:var(--dim)">origin</span>
+            <a href="https://github.com/ekoester96" target="_blank" class="terminal-link" style="margin-left:8px;">
+              https://github.com/ekoester96
+            </a>
+            <span style="color:var(--dim); margin-left:8px;">(fetch)</span>
+          </p>
         </div>
-
-        <div class="box fade-in-after">
-          <div class="box-header">[+] ShiftSync</div>
-          <div class="box-sub">Scheduling &amp; Workforce Management Application</div>
-          <ul>
-            <li>Full-stack scheduling application for workforce management</li>
-          </ul>
-          <div style="margin-top:12px;">
-            <a href="https://shiftsyncs.com/" target="_blank" class="terminal-link">-&gt; shiftsyncs.com</a>
-            <span style="margin: 0 8px; color:var(--dim);">|</span>
-            <a href="https://github.com/ekoester96/shift_sync" target="_blank" class="terminal-link">-&gt; github repo</a>
+ 
+        <h2 class="type-me glow" data-speed="30">git log --oneline  # pinned repos</h2>
+ 
+        <a href="https://github.com/ekoester96/data_dashboard" target="_blank" class="repo-card fade-in-after">
+          <div class="repo-name">[repo] data_dashboard</div>
+          <div class="repo-desc">Streamlit data dashboard with 6 ML models -- Tyson Foods Applied Business Analytics</div>
+          <div class="repo-meta">
+            <span>[*] Python</span>
+            <span>[~] ML / Analytics</span>
           </div>
+        </a>
+ 
+        <a href="https://github.com/ekoester96/shift_sync" target="_blank" class="repo-card fade-in-after">
+          <div class="repo-name">[repo] shift_sync</div>
+          <div class="repo-desc">ShiftSync -- Scheduling &amp; workforce management application</div>
+          <div class="repo-meta">
+            <span>[*] Web App</span>
+            <span>[~] shiftsyncs.com</span>
+          </div>
+        </a>
+ 
+        <div class="fade-in-after" style="margin-top:16px; padding:12px; border:1px dashed var(--border-color); font-family:var(--font-mono); font-size:0.8rem; color:var(--dim); text-align:center;">
+          More repos at <a href="https://github.com/ekoester96" target="_blank" class="terminal-link">github.com/ekoester96</a>
         </div>
-
-        <div class="fade-in-after" style="margin-top:30px; font-family:var(--font-mono); font-size:0.8rem; color:var(--dim);">
-          <span class="prompt-prefix">ethan@projects:~$ </span>
-          <span class="cursor"></span>
+ 
+        <div class="cmd-output"></div>
+        <div class="cmd-line fade-in-after" style="margin-top:30px;">
+          <span class="prompt-prefix cmd-prompt-text">ethan@github:~$ </span>
+          <input type="text" class="cmd-input" spellcheck="false" autocomplete="off" autocapitalize="off" placeholder="type help for commands">
         </div>
-
+ 
       </div>
     </div>
   </div>
-
+ 
   <script src="terminal.js"></script>
 </body>
 </html>
+ 

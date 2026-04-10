@@ -180,6 +180,205 @@
     });
   }
 
+  // ── Interactive Command Line ────────────
+  // Whitelist-only command validation for security
+  const VALID_PAGES = {
+    'home':      'index.html',
+    '~':         'index.html',
+    'about':     'about.html',
+    'projects':  'projects.html',
+    'github':    'github.html',
+    'work':      'work.html',
+    'education': 'education.html',
+  };
+
+  const CURRENT_PAGE = (function () {
+    const path = window.location.pathname.split('/').pop() || 'index.html';
+    for (const [name, file] of Object.entries(VALID_PAGES)) {
+      if (file === path) return name;
+    }
+    return 'home';
+  })();
+
+  function getNeofetch() {
+    return [
+      '         .----.          ethan@portfolio',
+      '        /      \\         ----------------',
+      '       |  >_   |         OS:     PortfolioOS 1.0',
+      '       |       |         Host:   Fayetteville, AR',
+      '        \\      /         Kernel: HTML5/CSS3/JS',
+      '         \'----\'          Shell:  terminal.js',
+      '      .---++++---.       Theme:  Pastel CRT',
+      '     /   |||||||   \\     WM:     Live Server',
+      '    \'===============\'    Uptime: since 2020',
+      '                         GPA:    4.0',
+    ];
+  }
+
+  function sanitize(str) {
+    // Strip anything that isn't alphanumeric, space, dash, slash, tilde, or dot
+    return str.replace(/[^a-zA-Z0-9 \-\/~.]/g, '').trim().toLowerCase();
+  }
+
+  function processCommand(raw) {
+    const input = sanitize(raw);
+    if (!input) return [];
+
+    // Split into parts
+    const parts = input.split(/\s+/);
+    const cmd = parts[0];
+    const args = parts.slice(1).join(' ');
+
+    // ── Navigation: cd ──
+    if (cmd === 'cd') {
+      const target = args.replace(/^\/|\/$/g, ''); // strip slashes
+      if (!target || target === '~' || target === 'home') {
+        navigateTo('index.html');
+        return ['Navigating to ~/home ...'];
+      }
+      if (VALID_PAGES[target]) {
+        navigateTo(VALID_PAGES[target]);
+        return ['Navigating to ~/' + target + ' ...'];
+      }
+      return ['-bash: cd: ' + target + ': No such directory',
+              'Try: cd [about|projects|github|work|education|home]'];
+    }
+
+    // ── ls ──
+    if (cmd === 'ls') {
+      return ['about/  projects/  github/  work/  education/'];
+    }
+
+    // ── pwd ──
+    if (cmd === 'pwd') {
+      return ['/home/ethan/' + CURRENT_PAGE];
+    }
+
+    // ── help ──
+    if (cmd === 'help') {
+      return [
+        'Available commands:',
+        '  cd <page>    Navigate to a page',
+        '  ls           List available pages',
+        '  pwd          Print working directory',
+        '  whoami       Display user info',
+        '  date         Show current date',
+        '  neofetch     System information',
+        '  clear        Clear terminal output',
+        '  help         Show this help message',
+      ];
+    }
+
+    // ── whoami ──
+    if (cmd === 'whoami') {
+      return ['visitor — welcome to ethan\'s portfolio'];
+    }
+
+    // ── date ──
+    if (cmd === 'date') {
+      return [new Date().toString()];
+    }
+
+    // ── clear ──
+    if (cmd === 'clear') {
+      return ['__CLEAR__'];
+    }
+
+    // ── neofetch ──
+    if (cmd === 'neofetch') {
+      return getNeofetch();
+    }
+
+    // ── sudo rm -rf ──
+    if (cmd === 'sudo') {
+      const rest = args.replace(/\s+/g, ' ');
+      if (rest.startsWith('rm -rf') || rest.startsWith('rm -rf /')) {
+        navigateTo('secret.html');
+        return ['Permission granted ... deleting everything ...'];
+      }
+      return ['[sudo] password for visitor: nice try.'];
+    }
+
+    // ── rm (without sudo) ──
+    if (cmd === 'rm') {
+      return ['rm: permission denied. Did you try sudo?'];
+    }
+
+    // ── cat ──
+    if (cmd === 'cat') {
+      return ['cat: ' + (args || 'meow') + ': try cd instead'];
+    }
+
+    // ── exit ──
+    if (cmd === 'exit') {
+      return ['logout', 'There is no escape. Type "help" for commands.'];
+    }
+
+    // ── Unknown ──
+    return ['-bash: ' + cmd + ': command not found. Type "help" for available commands.'];
+  }
+
+  function navigateTo(page) {
+    // Reuse the glitch transition
+    const overlay = document.createElement('div');
+    overlay.classList.add('page-transition');
+    overlay.innerHTML = '<div class="glitch-bar"></div>';
+    document.body.appendChild(overlay);
+    const wrapper = document.querySelector('.terminal-wrapper');
+    if (wrapper) {
+      wrapper.style.animation = 'glitch-text 0.3s ease infinite';
+      wrapper.style.opacity = '0.5';
+    }
+    setTimeout(function () { overlay.classList.add('active'); }, 50);
+    setTimeout(function () { window.location.href = page; }, 500);
+  }
+
+  function setupCommandLine() {
+    const input = document.querySelector('.cmd-input');
+    if (!input) return;
+
+    const output = document.querySelector('.cmd-output');
+    const prompt = document.querySelector('.cmd-prompt-text');
+
+    input.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter') {
+        e.preventDefault();
+        const raw = input.value;
+        input.value = '';
+
+        // Echo the command
+        const echoLine = document.createElement('div');
+        echoLine.style.cssText = 'font-family:var(--font-mono);font-size:0.8rem;color:var(--dim);margin:2px 0;';
+        echoLine.textContent = '$ ' + raw;
+        output.appendChild(echoLine);
+
+        // Process
+        const results = processCommand(raw);
+
+        if (results.length === 1 && results[0] === '__CLEAR__') {
+          output.innerHTML = '';
+          return;
+        }
+
+        results.forEach(function (line) {
+          const el = document.createElement('div');
+          el.style.cssText = 'font-family:var(--font-mono);font-size:0.8rem;color:var(--text);margin:1px 0;white-space:pre;';
+          el.textContent = line;
+          output.appendChild(el);
+        });
+
+        // Scroll to bottom
+        const body = document.querySelector('.terminal-body');
+        if (body) body.scrollTop = body.scrollHeight;
+      }
+    });
+
+    // Focus input when clicking anywhere in terminal
+    document.querySelector('.terminal-window').addEventListener('click', function (e) {
+      if (e.target.tagName !== 'A') input.focus();
+    });
+  }
+
   // ── Init ──────────────────────────────────
   document.addEventListener('DOMContentLoaded', () => {
     initPlasma();
@@ -197,6 +396,7 @@
 
     setupTransitions();
     setupAsciiReveal();
+    setupCommandLine();
 
     document.querySelectorAll('.fade-in-after').forEach((el) => {
       el.style.opacity = '0';

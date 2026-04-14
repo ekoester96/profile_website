@@ -1,0 +1,15 @@
+# nano ~/infrastructure/nginx/portfolio.conf
+server {
+    listen 443 ssl;
+    server_name ekoester.org;
+
+    ssl_certificate /etc/nginx/certs/portfolio.crt;
+    ssl_certificate_key /etc/nginx/certs/portfolio.key;
+
+    root /usr/share/nginx/html;
+    index index.html;
+
+    location / {
+        try_files $uri $uri.html $uri/ =404;
+    }
+}

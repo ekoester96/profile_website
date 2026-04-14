@@ -1,0 +1,15 @@
+# nano ~/infrastructure/nginx/project.conf
+server {
+    listen 443 ssl;
+    server_name project.ekoester.org;
+
+    ssl_certificate /etc/nginx/certs/project.crt;
+    ssl_certificate_key /etc/nginx/certs/project.key;
+
+    root /usr/share/nginx/html;
+    index index.html;
+
+    location / {
+        try_files $uri $uri/ /index.html;
+    }
+}

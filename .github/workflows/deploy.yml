@@ -1,0 +1,16 @@
+name: Deploy Portfolio
+on:
+  push:
+    branches: [main]
+
+jobs:
+  deploy:
+    runs-on: self-hosted
+    steps:
+      - name: Pull latest code
+        run: |
+          cd ~/sites/profile_website
+          git pull origin main
+
+      - name: Restart Nginx container
+        run: docker restart portfolio

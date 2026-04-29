@@ -325,7 +325,6 @@
     if (!input) return;
 
     const output = document.querySelector('.cmd-output');
-    const prompt = document.querySelector('.cmd-prompt-text');
 
     input.addEventListener('keydown', function (e) {
       if (e.key === 'Enter') {
@@ -365,6 +364,22 @@
       if (e.target.tagName !== 'A') input.focus();
     });
   }
+
+  // ── bfcache cleanup ───────────────────────
+  // When the browser restores a page from the back-forward cache, the DOM is
+  // frozen mid-transition: the .page-transition overlay is still active and
+  // blocking the page. Clean it up so Back/Forward actually works.
+  window.addEventListener('pageshow', function (e) {
+    if (e.persisted) {
+      document.querySelectorAll('.page-transition').forEach(function (el) { el.remove(); });
+      var main = document.querySelector('.terminal-wrapper');
+      if (main) {
+        main.style.opacity = '1';
+        main.style.animation = '';
+        main.style.visibility = 'visible';
+      }
+    }
+  });
 
   // ── Init ──────────────────────────────────
   document.addEventListener('DOMContentLoaded', () => {
